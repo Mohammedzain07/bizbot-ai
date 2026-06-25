@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #f8f9fc;
+    --color-surface: #ffffff;
+    --color-surface-2: #f1f4f9;
+    --color-border: #e8ecf2;
+    --color-text: #0f172a;
+    --color-text-2: #475569;
+    --color-text-3: #94a3b8;
+    --color-accent: #4f46e5;
+    --color-accent-light: #eef2ff;
+    --color-accent-hover: #4338ca;
+    --color-success: #059669;
+    --color-success-bg: #ecfdf5;
+    --color-warning: #d97706;
+    --color-warning-bg: #fffbeb;
+    --color-danger: #dc2626;
+    --color-danger-bg: #fef2f2;
+    --sidebar-width: 260px;
+    --navbar-height: 64px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-card;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  .btn-primary {
+    @apply bg-indigo-600 text-white font-medium rounded-xl px-5 py-2.5 text-sm
+           hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-150
+           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-slate-700 font-medium rounded-xl px-5 py-2.5 text-sm
+           border border-slate-200 hover:bg-slate-50 hover:border-slate-300
+           active:bg-slate-100 transition-colors duration-150
+           focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply text-slate-600 font-medium rounded-xl px-4 py-2 text-sm
+           hover:bg-slate-100 active:bg-slate-200 transition-colors duration-150;
+  }
+
+  .input-field {
+    @apply w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
+           text-slate-800 placeholder-slate-400
+           focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400
+           focus:bg-white transition-colors duration-150;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-emerald-50 text-emerald-700;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-amber-50 text-amber-700;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-red-50 text-red-600;
+  }
+
+  .badge-info {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-indigo-50 text-indigo-700;
+  }
+
+  .badge-neutral {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-slate-100 text-slate-600;
+  }
+
+  .section-label {
+    @apply text-xs font-semibold tracking-widest uppercase text-slate-400;
+  }
+
+  .metric-value {
+    @apply font-display text-2xl font-700 text-slate-900 tracking-tight;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .divider {
+    @apply border-t border-slate-100;
+  }
+}
+
+/* Scrollbar styling for sidebar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
